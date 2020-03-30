@@ -1,0 +1,14 @@
+.card {
+  display: inline-block;
+  max-width: 300px;
+  background-color: #80ffbf;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 7px;
+  box-shadow: 3px 4px 10px -2px rgba(0, 0, 0, 0.61);
+  text-align: center;
+}
+
+.card:hover {
+  box-shadow: 3px 4px 10px -2px rgba(255, 208, 0, 1);
+}
