@@ -1,44 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import './app.css';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      robots: [],
-      searchField: ''
-    };
-  }
+const App = () => {
+  const [searchField, setSearchField] = useState('');
+  const [robots, setRobots] = useState([]);
 
-  onSearchChange = event => {
-    this.setState({ searchField: event.target.value });
-  };
+  useEffect(() => {
+    if (robots.length === 0) {
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then((resp) => resp.json())
+        .then((data) => {
+          const newRobots = data.map((user) => {
+            return {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+            };
+          });
+          setRobots(newRobots);
+        });
+    }
+  });
 
-  componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(resp => resp.json())
-      .then(data => {
-        this.setState({ robots: data });
-      });
-  }
+  const filteredRobots = robots.filter((robot) => {
+    return robot.name.toLowerCase().includes(searchField.toLowerCase());
+  });
 
-  render() {
-    const filteredRobots = this.state.robots.filter(robot => {
-      return robot.name
-        .toLowerCase()
-        .includes(this.state.searchField.toLowerCase());
-    });
-
-    return (
-      <div className='main'>
-        <h1 className='header'>Robofriends</h1>
-        <SearchBox searchChange={this.onSearchChange} />
-        <CardList robots={filteredRobots} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className='main'>
+      <h1 className='header'>Robofriends</h1>
+      <SearchBox searchChange={(e) => setSearchField(e.target.value)} />
+      <CardList robots={filteredRobots} />
+    </div>
+  );
+};
 
 export default App;
