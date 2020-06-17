@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
+import CustomRobotCard from '../components/CustomRobotCard';
 import './app.css';
 
 const App = () => {
@@ -54,7 +55,15 @@ const App = () => {
       <button className='btn' onClick={() => setRobots([...robots, newRobot])}>
         RANDOM
       </button>
-      <CardList robots={filteredRobots} />
+      <CardList robots={robots} />
+      <CustomRobotCard
+        onSubmit={(name) => {
+          setRobots([
+            ...robots,
+            { id: 10000, name: name, email: 'email@email.com' },
+          ]);
+        }}
+      />
     </div>
   );
 };
