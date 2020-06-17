@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
-import { Robots } from '../robots.js';
 import './app.css';
-
-/*
-setRobots([...robots, returnRobot()]) */
 
 const App = () => {
   const [searchField, setSearchField] = useState('');
@@ -13,25 +9,30 @@ const App = () => {
   const [newRobot, setNewRobot] = useState({});
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((resp) => resp.json())
-      .then((data) => {
-        const tempRobots = data.map((user) => {
-          return {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-          };
-        });
-        setRobots(tempRobots);
+    const fetchData = async () => {
+      const response = await fetch(
+        'https://jsonplaceholder.typicode.com/users'
+      );
+      const data = await response.json();
+      const tempRobots = data.map((item) => {
+        return {
+          id: item.id,
+          name: item.name,
+          email: item.email,
+        };
       });
+      setRobots(tempRobots);
+    };
+    fetchData();
   }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('https://api.randomuser.me/');
       const data = await response.json();
-      const item = data.results[0];
+      const [item] = data.results;
+
+      console.log(item);
 
       setNewRobot({
         id: item.registered.date,
@@ -50,7 +51,9 @@ const App = () => {
     <div className='main'>
       <h1 className='header'>Robofriends</h1>
       <SearchBox searchChange={(e) => setSearchField(e.target.value)} />
-      <button onClick={() => setRobots([...robots, newRobot])}>Click me</button>
+      <button className='btn' onClick={() => setRobots([...robots, newRobot])}>
+        RANDOM
+      </button>
       <CardList robots={filteredRobots} />
     </div>
   );
