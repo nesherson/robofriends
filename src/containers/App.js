@@ -33,8 +33,6 @@ const App = () => {
       const data = await response.json();
       const [item] = data.results;
 
-      console.log(item);
-
       setNewRobot({
         id: item.registered.date,
         name: item.name.first,
@@ -55,15 +53,16 @@ const App = () => {
       <button className='btn' onClick={() => setRobots([...robots, newRobot])}>
         RANDOM
       </button>
-      <CardList robots={robots} />
-      <CustomRobotCard
-        onSubmit={(name) => {
-          setRobots([
-            ...robots,
-            { id: 10000, name: name, email: 'email@email.com' },
-          ]);
-        }}
-      />
+      <CardList robots={filteredRobots}>
+        <CustomRobotCard
+          onSubmit={(name, email) => {
+            setRobots([
+              ...robots,
+              { id: new Date(), name: name, email: email },
+            ]);
+          }}
+        />
+      </CardList>
     </div>
   );
 };

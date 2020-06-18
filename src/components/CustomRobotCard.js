@@ -12,12 +12,13 @@ const useInputValue = (initialValue) => {
 
 const CustomRobotCard = ({ onSubmit }) => {
   const name = useInputValue('');
+  const email = useInputValue('');
   return (
     <div className='customCard'>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onSubmit(name.value);
+          onSubmit(name.value, email.value);
         }}
       >
         <label htmlFor='customRobotName'>Name</label>
@@ -25,7 +26,16 @@ const CustomRobotCard = ({ onSubmit }) => {
           type='text'
           id='customRobotName'
           name='customRobotName'
+          placeholder='Enter name'
           {...name}
+        />
+        <label htmlFor='customRobotEmail'>Email</label>
+        <input
+          type='email'
+          id='customRobotEmail'
+          name='customRobotEmail'
+          placeholder='Enter email'
+          {...email}
         />
         <input type='submit' value='Submit' />
       </form>

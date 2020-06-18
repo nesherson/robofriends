@@ -11,6 +11,20 @@
   transition-duration: 0.25s;
 }
 
+.customCard form {
+  display: flex;
+  flex-direction: column;
+}
+
+.customCard input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 2px solid #80ffbf;
+  background-color: #ccf5ff;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
 .customCard:hover {
   transform: scale(1.05);
 }
