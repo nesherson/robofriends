@@ -8,12 +8,14 @@
   box-shadow: 3px 4px 10px -2px rgba(0, 0, 0, 0.61);
   text-align: center;
   transition-duration: 0.25s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .customCard form {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
 }
 
 .customCard input {
@@ -23,6 +25,11 @@
   background-color: #ccf5ff;
   font-size: 1.05rem;
   margin-bottom: 8px;
+}
+
+.customCard h2 {
+  font-size: 2.35rem;
+  text-transform: uppercase;
 }
 
 .customCard:hover {
