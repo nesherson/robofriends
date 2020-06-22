@@ -57,6 +57,13 @@ const CardList = ({ searchField }) => {
               id={robot.id}
               name={robot.name}
               email={robot.email}
+              onClick={() => {
+                const index = robots.indexOf(robot);
+                const tempRobots = robots.slice();
+                tempRobots.splice(index, 1);
+
+                setRobots(tempRobots);
+              }}
             />
           );
         })}
@@ -64,7 +71,7 @@ const CardList = ({ searchField }) => {
           onSubmit={(name, email) => {
             setRobots([
               ...robots,
-              { id: new Date(), name: name, email: email },
+              { id: Date.now(), name: name, email: email },
             ]);
           }}
         />
