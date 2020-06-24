@@ -2,8 +2,62 @@ import React from 'react';
 
 const Wrapper = ({ children, click, setClick }) => {
   return (
-    <div style={{ height: '100%' }} onClick={() => setClick(true)}>
-      {click ? children : <h2>Add me!</h2>}
+    <div
+      style={{
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+      onClick={() => setClick(true)}
+    >
+      {click ? (
+        children
+      ) : (
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='256'
+          height='256'
+          viewBox='0 0 512 512'
+        >
+          <title>ionicons-v5-a</title>
+          <path
+            d='M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z'
+            style={{
+              fill: 'none',
+              stroke: '#000',
+              strokeMiterlimit: '10',
+              strokeWidth: '32px',
+            }}
+          />
+          <line
+            x1='256'
+            y1='176'
+            x2='256'
+            y2='336'
+            style={{
+              fill: 'none',
+              stroke: '#000',
+              strokeLinecap: 'round',
+              strokeLinejoin: 'round',
+              strokeWidth: '32px',
+            }}
+          />
+          <line
+            x1='336'
+            y1='256'
+            x2='176'
+            y2='256'
+            style={{
+              fill: 'none',
+              stroke: '#000',
+              strokeLinecap: 'round',
+              strokeLinejoin: 'round',
+              strokeWidth: '32px',
+            }}
+          />
+        </svg>
+      )}
     </div>
   );
 };

@@ -50,20 +50,13 @@ const CardList = ({ searchField }) => {
         RANDOM
       </button>
       <div className='cardList'>
-        {filteredRobots.map((robot) => {
+        {filteredRobots.map((robot, i) => {
           return (
             <Card
               key={robot.id}
               id={robot.id}
               name={robot.name}
               email={robot.email}
-              onClick={() => {
-                const index = robots.indexOf(robot);
-                const tempRobots = robots.slice();
-                tempRobots.splice(index, 1);
-
-                setRobots(tempRobots);
-              }}
             />
           );
         })}
