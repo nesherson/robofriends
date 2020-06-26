@@ -18,6 +18,7 @@ const CardList = ({ searchField }) => {
           id: item.id,
           name: item.name,
           email: item.email,
+          picture: 'robot',
         };
       });
       setRobots(tempRobots);
@@ -57,15 +58,22 @@ const CardList = ({ searchField }) => {
               id={robot.id}
               name={robot.name}
               email={robot.email}
+              picture={robot.picture}
             />
           );
         })}
         <CustomRobotCard
-          onSubmit={(name, email) => {
+          onSubmit={(name, email, pictureType) => {
             setRobots([
               ...robots,
-              { id: Date.now(), name: name, email: email },
+              {
+                id: Date.now(),
+                name: name,
+                email: email,
+                picture: pictureType,
+              },
             ]);
+            console.log(filteredRobots);
           }}
         />
       </div>

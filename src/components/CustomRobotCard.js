@@ -14,6 +14,7 @@ import './customRobotCard.css';
 const CustomRobotCard = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [pictureType, setPictureType] = useState('robot');
   const [click, setClick] = useState(false);
 
   return (
@@ -23,7 +24,7 @@ const CustomRobotCard = ({ onSubmit }) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onSubmit(name, email);
+            onSubmit(name, email, pictureType);
             setName('');
             setEmail('');
             setClick(false);
@@ -47,6 +48,29 @@ const CustomRobotCard = ({ onSubmit }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <p>Type of picture:</p>
+          <label htmlFor='robot'>
+            <input
+              type='radio'
+              id='robot'
+              name='pictureType'
+              value='robot'
+              //checked={() => setPictureType('robot')}
+              onChange={(e) => setPictureType(e.target.value)}
+            />
+            Robot
+          </label>
+          <label htmlFor='monster'>
+            <input
+              type='radio'
+              id='monster'
+              name='pictureType'
+              value='monster'
+              //checked={() => setPictureType('monster')}
+              onChange={(e) => setPictureType(e.target.value)}
+            />
+            Monster
+          </label>
           <input type='submit' value='Submit' />
         </form>
       </Wrapper>

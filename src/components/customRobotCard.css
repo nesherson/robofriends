@@ -1,6 +1,6 @@
 .customCard {
   width: 300px;
-  height: 425px;
+  min-height: 425px;
   background-color: #80ffbf;
   border-radius: 4px;
   padding: 20px;
@@ -16,6 +16,7 @@
 .customCard form {
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .customCard input {
