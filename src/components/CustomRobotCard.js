@@ -71,6 +71,28 @@ const CustomRobotCard = ({ onSubmit }) => {
             />
             Monster
           </label>
+          <label htmlFor='robotHead'>
+            <input
+              type='radio'
+              id='robotHead'
+              name='pictureType'
+              value='robotHead'
+              //checked={() => setPictureType('monster')}
+              onChange={(e) => setPictureType(e.target.value)}
+            />
+            Robot head
+          </label>
+          <label htmlFor='kittens'>
+            <input
+              type='radio'
+              id='kitten'
+              name='pictureType'
+              value='kitten'
+              //checked={() => setPictureType('monster')}
+              onChange={(e) => setPictureType(e.target.value)}
+            />
+            Kitten
+          </label>
           <input type='submit' value='Submit' />
         </form>
       </Wrapper>
