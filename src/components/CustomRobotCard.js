@@ -55,7 +55,6 @@ const CustomRobotCard = ({ onSubmit }) => {
               id='robot'
               name='pictureType'
               value='robot'
-              //checked={() => setPictureType('robot')}
               onChange={(e) => setPictureType(e.target.value)}
             />
             Robot
@@ -66,7 +65,6 @@ const CustomRobotCard = ({ onSubmit }) => {
               id='monster'
               name='pictureType'
               value='monster'
-              //checked={() => setPictureType('monster')}
               onChange={(e) => setPictureType(e.target.value)}
             />
             Monster
@@ -77,7 +75,6 @@ const CustomRobotCard = ({ onSubmit }) => {
               id='robotHead'
               name='pictureType'
               value='robotHead'
-              //checked={() => setPictureType('monster')}
               onChange={(e) => setPictureType(e.target.value)}
             />
             Robot head
@@ -88,7 +85,6 @@ const CustomRobotCard = ({ onSubmit }) => {
               id='kitten'
               name='pictureType'
               value='kitten'
-              //checked={() => setPictureType('monster')}
               onChange={(e) => setPictureType(e.target.value)}
             />
             Kitten

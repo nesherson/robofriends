@@ -31,11 +31,21 @@ const CardList = ({ searchField }) => {
       const response = await fetch('https://api.randomuser.me/');
       const data = await response.json();
       const [item] = data.results;
+      const randomNum = Math.floor(Math.random() * 4 + 1);
+      const picture =
+        randomNum === 1
+          ? 'robot'
+          : randomNum === 2
+          ? 'monster'
+          : randomNum === 3
+          ? 'robotHead'
+          : 'kitten';
 
       setNewRobot({
         id: item.registered.date,
         name: item.name.first,
         email: item.email,
+        picture: picture,
       });
     };
     fetchData();
