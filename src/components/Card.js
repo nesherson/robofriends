@@ -10,6 +10,7 @@ const Card = ({ id, name, email, picture, onClick }) => {
       : picture === 'robotHead'
       ? 3
       : 4;
+
   return (
     <div className='card' onClick={onClick}>
       <img

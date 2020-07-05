@@ -17,6 +17,8 @@ const CustomRobotCard = ({ onSubmit }) => {
   const [pictureType, setPictureType] = useState('robot');
   const [click, setClick] = useState(false);
 
+  const tempEmail = email === '' ? name + '@tempMail.com' : email;
+
   return (
     <div className='customCard'>
       <Wrapper click={click} setClick={setClick}>
@@ -24,7 +26,7 @@ const CustomRobotCard = ({ onSubmit }) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onSubmit(name, email, pictureType);
+            onSubmit(name, tempEmail, pictureType);
             setName('');
             setEmail('');
             setClick(false);

@@ -83,7 +83,6 @@ const CardList = ({ searchField }) => {
                 picture: pictureType,
               },
             ]);
-            console.log(filteredRobots);
           }}
         />
       </div>
