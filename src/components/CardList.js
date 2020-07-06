@@ -3,6 +3,38 @@ import Card from './Card';
 import CustomRobotCard from '../components/CustomRobotCard';
 import './cardList.css';
 
+const returnRandomPicture = () => {
+  const randomNum = Math.floor(Math.random() * 4 + 1);
+  /*const randomPicture =
+    randomNum === 1
+      ? 'robot'
+      : randomNum === 2
+      ? 'monster'
+      : randomNum === 3
+      ? 'robotHead'
+      : 'kitten';
+*/
+  let randomPicture = '';
+  switch (randomNum) {
+    case 1:
+      randomPicture = 'robot';
+      break;
+    case 2:
+      randomPicture = 'monster';
+      break;
+    case 3:
+      randomPicture = 'robotHead';
+      break;
+    case 4:
+      randomPicture = 'kitten';
+      break;
+    default:
+      randomPicture = 'robot';
+      break;
+  }
+  return randomPicture;
+};
+
 const CardList = ({ searchField }) => {
   const [robots, setRobots] = useState([]);
   const [newRobot, setNewRobot] = useState({});
@@ -18,7 +50,7 @@ const CardList = ({ searchField }) => {
           id: item.id,
           name: item.name,
           email: item.email,
-          picture: 'robot',
+          picture: returnRandomPicture(),
         };
       });
       setRobots(tempRobots);
@@ -31,21 +63,12 @@ const CardList = ({ searchField }) => {
       const response = await fetch('https://api.randomuser.me/');
       const data = await response.json();
       const [item] = data.results;
-      const randomNum = Math.floor(Math.random() * 4 + 1);
-      const picture =
-        randomNum === 1
-          ? 'robot'
-          : randomNum === 2
-          ? 'monster'
-          : randomNum === 3
-          ? 'robotHead'
-          : 'kitten';
 
       setNewRobot({
         id: item.registered.date,
         name: item.name.first,
         email: item.email,
-        picture: picture,
+        picture: returnRandomPicture(),
       });
     };
     fetchData();
