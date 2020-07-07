@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 
-import './app.css';
+import styles from './app.module.css';
 
 const App = () => {
   const [searchField, setSearchField] = useState('');
@@ -14,8 +14,8 @@ const App = () => {
       />*/
 
   return (
-    <div className='main'>
-      <h1 className='header'>Robofriends</h1>
+    <div className={styles.main}>
+      <h1 className={styles.header}>Robofriends</h1>
       <SearchBox searchChange={(e) => setSearchField(e.target.value)} />
       <CardList searchField={searchField} />
     </div>

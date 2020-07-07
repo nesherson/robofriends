@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-import './card.css';
+import styles from './card.module.css';
 
 const Card = ({ id, name, email, picture }) => {
   const [characterName, setCharacterName] = useState(name);
@@ -16,7 +15,7 @@ const Card = ({ id, name, email, picture }) => {
       : 4;
 
   return (
-    <div className='card'>
+    <div className={styles.card}>
       <img
         src={`https://robohash.org/${id}?set=set${pictureType}`}
         alt={`${name}`}
@@ -24,22 +23,22 @@ const Card = ({ id, name, email, picture }) => {
       <div>
         {click ? (
           <form
-            className='form'
+            className={styles.form}
             onSubmit={(e) => {
               e.preventDefault();
               setClick(false);
             }}
           >
             <input
-              className='input'
+              className={styles.input}
               type='text'
               value={characterName}
               onChange={(e) => setCharacterName(e.target.value)}
             />
-            <input className='card-btn' type='submit' value='Change' />
+            <input className={styles.cardBtn} type='submit' value='Change' />
           </form>
         ) : (
-          <h2 onClick={() => setClick(true)}>{characterName}</h2>
+          <h2 onDoubleClick={() => setClick(true)}>{characterName}</h2>
         )}
         <p>{email}</p>
       </div>

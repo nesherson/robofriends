@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import CustomRobotCard from '../components/CustomRobotCard';
-import './cardList.css';
+import styles from './cardList.module.css';
 
 const returnRandomPicture = () => {
   const randomNum = Math.floor(Math.random() * 4 + 1);
@@ -71,11 +71,14 @@ const CardList = ({ searchField }) => {
   });
 
   return (
-    <div className='cardList-wrapper'>
-      <button className='btn' onClick={() => setRobots([...robots, newRobot])}>
+    <div className={styles.cardListWrapper}>
+      <button
+        className={styles.btn}
+        onClick={() => setRobots([...robots, newRobot])}
+      >
         RANDOM
       </button>
-      <div className='cardList'>
+      <div className={styles.cardList}>
         {filteredRobots.map((robot, i) => {
           return (
             <Card

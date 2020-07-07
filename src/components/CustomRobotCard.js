@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Wrapper from './Wrapper';
-import './customRobotCard.css';
+import styles from './customRobotCard.module.css';
 
 /*const useInputValue = (initialValue) => {
   const [value, setValue] = useState(initialValue);
@@ -20,7 +20,7 @@ const CustomRobotCard = ({ onSubmit }) => {
   const tempEmail = email === '' ? name + '@tempMail.com' : email;
 
   return (
-    <div className='customCard'>
+    <div className={styles.customCard}>
       <Wrapper click={click} setClick={setClick}>
         <h2>Add new character</h2>
         <form
