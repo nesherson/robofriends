@@ -95,19 +95,23 @@ const CardList = ({ searchField }) => {
             />
           );
         })}
-        <CustomRobotCard
-          onSubmit={(name, email, pictureType) => {
-            setRobots([
-              ...robots,
-              {
-                id: Date.now(),
-                name: name,
-                email: email,
-                picture: pictureType,
-              },
-            ]);
-          }}
-        />
+        {!(searchField !== '') ? (
+          <CustomRobotCard
+            onSubmit={(name, email, pictureType) => {
+              setRobots([
+                ...robots,
+                {
+                  id: Date.now(),
+                  name: name,
+                  email: email,
+                  picture: pictureType,
+                },
+              ]);
+            }}
+          />
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

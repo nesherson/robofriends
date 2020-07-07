@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './card.css';
 
 const Card = ({ id, name, email, picture, onClick }) => {
+  const [characterName, setCharacterName] = useState(name);
+
   const pictureType =
     picture === 'robot'
       ? 1
@@ -18,7 +20,7 @@ const Card = ({ id, name, email, picture, onClick }) => {
         alt={`${name}`}
       />
       <div>
-        <h2>{name}</h2>
+        <h2>{characterName}</h2>
         <p>{email}</p>
       </div>
     </div>

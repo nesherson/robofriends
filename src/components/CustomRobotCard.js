@@ -22,7 +22,7 @@ const CustomRobotCard = ({ onSubmit }) => {
   return (
     <div className='customCard'>
       <Wrapper click={click} setClick={setClick}>
-        <h2>Add new robot</h2>
+        <h2>Add new character</h2>
         <form
           onSubmit={(e) => {
             e.preventDefault();
