@@ -66,7 +66,7 @@ const CardList = ({ searchField }) => {
 
       setNewRobot({
         id: item.registered.date,
-        name: item.name.first,
+        name: `${item.name.first} ${item.name.last}`,
         email: item.email,
         picture: returnRandomPicture(),
       });
