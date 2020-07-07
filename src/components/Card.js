@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import './card.css';
 
 const Card = ({ id, name, email, picture }) => {
@@ -35,6 +36,7 @@ const Card = ({ id, name, email, picture }) => {
               value={characterName}
               onChange={(e) => setCharacterName(e.target.value)}
             />
+            <input className='card-btn' type='submit' value='Change' />
           </form>
         ) : (
           <h2 onClick={() => setClick(true)}>{characterName}</h2>

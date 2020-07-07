@@ -26,3 +26,23 @@
   background-color: #ccf5ff;
   font-size: 1.05rem;
 }
+
+.input:focus {
+  border: 2px solid rgba(0, 128, 128, 1);
+  color: rgba(0, 128, 128, 1);
+  outline: none;
+}
+
+.card-btn {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccf5ff;
+  background-color: #ccf5ff;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+.card-btn:hover {
+  color: rgba(0, 128, 128, 1);
+  border: 2px solid rgba(0, 128, 128, 1);
+}

@@ -5,15 +5,7 @@ import './cardList.css';
 
 const returnRandomPicture = () => {
   const randomNum = Math.floor(Math.random() * 4 + 1);
-  /*const randomPicture =
-    randomNum === 1
-      ? 'robot'
-      : randomNum === 2
-      ? 'monster'
-      : randomNum === 3
-      ? 'robotHead'
-      : 'kitten';
-*/
+
   let randomPicture = '';
   switch (randomNum) {
     case 1:
@@ -118,3 +110,4 @@ const CardList = ({ searchField }) => {
 };
 
 export default CardList;
+export { returnRandomPicture };
