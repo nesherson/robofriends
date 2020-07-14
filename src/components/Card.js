@@ -38,7 +38,9 @@ const Card = ({ id, name, email, picture }) => {
             <input className={styles.cardBtn} type='submit' value='Change' />
           </form>
         ) : (
-          <h2 onDoubleClick={() => setClick(true)}>{characterName}</h2>
+          <h2 className={styles.name} onDoubleClick={() => setClick(true)}>
+            {characterName}
+          </h2>
         )}
         <p>{email}</p>
       </div>
