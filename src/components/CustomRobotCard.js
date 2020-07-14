@@ -22,7 +22,7 @@ const CustomRobotCard = ({ onSubmit }) => {
     <div onClick={() => setClick(true)} className={styles.customCard}>
       {click ? (
         <div>
-          <h2>Add new character</h2>
+          <h2 className={styles.header}>Add new character</h2>
           <form
             onSubmit={(e) => {
               e.preventDefault();
