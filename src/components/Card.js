@@ -1,32 +1,36 @@
 import React, { useState } from 'react';
 import styles from './card.module.css';
 
-const Card = ({ id, name, email, picture }) => {
-  const [characterName, setCharacterName] = useState(name);
-  const [click, setClick] = useState(false); // rename click to renderNameForm
+function getPictureType(pictureType) {
+  switch (pictureType) {
+    case 'robot':
+      return 1;
+    case 'monster':
+      return 2;
+    case 'robotHead':
+      return 3;
+    default:
+      return 4;
+  }
+}
 
-  const pictureType = // change to switch
-    picture === 'robot'
-      ? 1
-      : picture === 'monster'
-      ? 2
-      : picture === 'robotHead'
-      ? 3
-      : 4;
+const Card = ({ id, name, email, pictureType }) => {
+  const [characterName, setCharacterName] = useState(name);
+  const [renderNameForm, setRenderNameForm] = useState(false);
 
   return (
     <div className={styles.card}>
       <img
-        src={`https://robohash.org/${id}?set=set${pictureType}`}
+        src={`https://robohash.org/${id}?set=set${getPictureType(pictureType)}`}
         alt={`${name}`}
       />
       <div>
-        {click ? (
+        {renderNameForm ? (
           <form
             className={styles.form}
             onSubmit={(e) => {
               e.preventDefault();
-              setClick(false);
+              setRenderNameForm(false);
             }}
           >
             <input
@@ -38,7 +42,10 @@ const Card = ({ id, name, email, picture }) => {
             <input className={styles.cardBtn} type='submit' value='Change' />
           </form>
         ) : (
-          <h2 className={styles.name} onDoubleClick={() => setClick(true)}>
+          <h2
+            className={styles.name}
+            onDoubleClick={() => setRenderNameForm(true)}
+          >
             {characterName}
           </h2>
         )}

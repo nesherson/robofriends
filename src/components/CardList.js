@@ -39,7 +39,7 @@ const CardList = ({ searchField }) => {
           id: item.id,
           name: item.name,
           email: item.email,
-          picture: returnRandomPicture(),
+          pictureType: returnRandomPicture(),
         };
       });
       setRobots(tempRobots);
@@ -56,7 +56,7 @@ const CardList = ({ searchField }) => {
       id: item.registered.date,
       name: `${item.name.first} ${item.name.last}`,
       email: item.email,
-      picture: returnRandomPicture(),
+      pictureType: returnRandomPicture(),
     };
 
     setRobots([...robots, newRobot]);
@@ -77,7 +77,7 @@ const CardList = ({ searchField }) => {
               id={robot.id}
               name={robot.name}
               email={robot.email}
-              picture={robot.picture}
+              pictureType={robot.pictureType}
             />
           );
         })}
@@ -90,7 +90,7 @@ const CardList = ({ searchField }) => {
                   id: Date.now(),
                   name: name,
                   email: email,
-                  picture: pictureType,
+                  pictureType: pictureType,
                 },
               ]);
             }}
