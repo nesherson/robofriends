@@ -3,33 +3,30 @@ import Card from './Card';
 import CustomRobotCard from '../components/CustomRobotCard';
 import styles from './cardList.module.css';
 
+function filterRobots(robots, searchField) {
+  return robots.filter((robot) => {
+    return robot.name.toLowerCase().includes(searchField.toLowerCase());
+  });
+}
+
 const returnRandomPicture = () => {
   const randomNum = Math.floor(Math.random() * 4 + 1);
 
-  let randomPicture = '';
   switch (randomNum) {
-    case 1:
-      randomPicture = 'robot';
-      break;
-    case 2:
-      randomPicture = 'monster';
-      break;
-    case 3:
-      randomPicture = 'robotHead';
-      break;
-    case 4:
-      randomPicture = 'kitten';
-      break;
     default:
-      randomPicture = 'robot';
-      break;
+    case 1:
+      return 'robot';
+    case 2:
+      return 'monster';
+    case 3:
+      return 'robotHead';
+    case 4:
+      return 'kitten';
   }
-  return randomPicture;
 };
 
 const CardList = ({ searchField }) => {
   const [robots, setRobots] = useState([]);
-  const [newRobot, setNewRobot] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,32 +47,26 @@ const CardList = ({ searchField }) => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('https://api.randomuser.me/');
-      const data = await response.json();
-      const [item] = data.results;
+  async function handleOnClick() {
+    const response = await fetch('https://api.randomuser.me/');
+    const data = await response.json();
+    const [item] = data.results;
 
-      setNewRobot({
-        id: item.registered.date,
-        name: `${item.name.first} ${item.name.last}`,
-        email: item.email,
-        picture: returnRandomPicture(),
-      });
+    const newRobot = {
+      id: item.registered.date,
+      name: `${item.name.first} ${item.name.last}`,
+      email: item.email,
+      picture: returnRandomPicture(),
     };
-    fetchData();
-  }, [robots]);
 
-  const filteredRobots = robots.filter((robot) => {
-    return robot.name.toLowerCase().includes(searchField.toLowerCase());
-  });
+    setRobots([...robots, newRobot]);
+  }
+
+  const filteredRobots = filterRobots(robots, searchField);
 
   return (
     <div className={styles.cardListWrapper}>
-      <button
-        className={styles.btn}
-        onClick={() => setRobots([...robots, newRobot])}
-      >
+      <button className={styles.btn} onClick={handleOnClick}>
         RANDOM
       </button>
       <div className={styles.cardList}>
@@ -113,4 +104,3 @@ const CardList = ({ searchField }) => {
 };
 
 export default CardList;
-export { returnRandomPicture };

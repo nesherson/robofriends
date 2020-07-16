@@ -3,9 +3,9 @@ import styles from './card.module.css';
 
 const Card = ({ id, name, email, picture }) => {
   const [characterName, setCharacterName] = useState(name);
-  const [click, setClick] = useState(false);
+  const [click, setClick] = useState(false); // rename click to renderNameForm
 
-  const pictureType =
+  const pictureType = // change to switch
     picture === 'robot'
       ? 1
       : picture === 'monster'
