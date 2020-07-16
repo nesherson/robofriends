@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AddItem from './AddItem';
 import styles from './customRobotCard.module.css';
 
 /*const useInputValue = (initialValue) => {
@@ -14,13 +15,16 @@ const CustomRobotCard = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [pictureType, setPictureType] = useState('robot');
-  const [click, setClick] = useState(false);
+  const [renderSvgElement, setRenderSvgElement] = useState(false);
 
   const tempEmail = email === '' ? name + '@tempMail.com' : email;
 
   return (
-    <div onClick={() => setClick(true)} className={styles.customCard}>
-      {click ? (
+    <div
+      onClick={() => setRenderSvgElement(true)}
+      className={styles.customCard}
+    >
+      {renderSvgElement ? (
         <div>
           <h2 className={styles.header}>Add new character</h2>
           <form
@@ -29,7 +33,7 @@ const CustomRobotCard = ({ onSubmit }) => {
               onSubmit(name, tempEmail, pictureType);
               setName('');
               setEmail('');
-              setClick(false);
+              setRenderSvgElement(false);
             }}
           >
             <label htmlFor='robotName'>Name</label>
@@ -95,58 +99,7 @@ const CustomRobotCard = ({ onSubmit }) => {
           </form>
         </div>
       ) : (
-        <div
-          style={{
-            height: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='256'
-            height='256'
-            viewBox='0 0 512 512'
-          >
-            <title>ionicons-v5-a</title>
-            <path
-              d='M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z'
-              style={{
-                fill: 'none',
-                stroke: '#000',
-                strokeMiterlimit: '10',
-                strokeWidth: '32px',
-              }}
-            />
-            <line
-              x1='256'
-              y1='176'
-              x2='256'
-              y2='336'
-              style={{
-                fill: 'none',
-                stroke: '#000',
-                strokeLinecap: 'round',
-                strokeLinejoin: 'round',
-                strokeWidth: '32px',
-              }}
-            />
-            <line
-              x1='336'
-              y1='256'
-              x2='176'
-              y2='256'
-              style={{
-                fill: 'none',
-                stroke: '#000',
-                strokeLinecap: 'round',
-                strokeLinejoin: 'round',
-                strokeWidth: '32px',
-              }}
-            />
-          </svg>
-        </div>
+        <AddItem color={'rgba(50, 128, 128, 1)'} />
       )}
     </div>
   );
