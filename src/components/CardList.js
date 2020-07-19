@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
-import CustomRobotCard from '../components/CustomRobotCard';
+import CustomCard from './CustomCard';
 import styles from './cardList.module.css';
+import { ReactComponent as AddIcon } from './icons/add-circle-outline.svg';
 
 function filterRobots(robots, searchField) {
   return robots.filter((robot) => {
@@ -82,7 +83,7 @@ const CardList = ({ searchField }) => {
           );
         })}
         {!(searchField !== '') ? (
-          <CustomRobotCard
+          <CustomCard
             onSubmit={(name, email, pictureType) => {
               setRobots([
                 ...robots,
@@ -94,6 +95,7 @@ const CardList = ({ searchField }) => {
                 },
               ]);
             }}
+            icon={AddIcon}
           />
         ) : (
           ''

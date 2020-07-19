@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 import AddItem from './AddItem';
-import styles from './customRobotCard.module.css';
 
-/*const useInputValue = (initialValue) => {
-  const [value, setValue] = useState(initialValue);
-
-  return {
-    value,
-    onChange: (e) => setValue(e.target.value),
-  };
-};*/
+import styles from './customCard.module.css';
 
 const CustomRobotCard = ({ onSubmit }) => {
   const [name, setName] = useState('');
@@ -99,7 +91,7 @@ const CustomRobotCard = ({ onSubmit }) => {
           </form>
         </div>
       ) : (
-        <AddItem color={'rgba(50, 128, 128, 1)'} />
+        <AddItem color={'rgb(0, 128, 128, 1)'} />
       )}
     </div>
   );
