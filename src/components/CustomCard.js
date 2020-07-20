@@ -3,7 +3,7 @@ import AddItem from './AddItem';
 
 import styles from './customCard.module.css';
 
-const CustomRobotCard = ({ onSubmit }) => {
+const CustomCard = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [pictureType, setPictureType] = useState('robot');
@@ -28,20 +28,20 @@ const CustomRobotCard = ({ onSubmit }) => {
               setRenderSvgElement(false);
             }}
           >
-            <label htmlFor='robotName'>Name</label>
+            <label htmlFor='characterName'>Name</label>
             <input
               type='text'
-              id='robotName'
-              name='robotName'
+              id='characterName'
+              name='characterName'
               placeholder='Enter name'
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <label htmlFor='customRobotEmail'>Email</label>
+            <label htmlFor='characterEmail'>Email</label>
             <input
               type='email'
-              id='robotEmail'
-              name='robotEmail'
+              id='characterEmail'
+              name='characterEmail'
               placeholder='Enter email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -97,4 +97,4 @@ const CustomRobotCard = ({ onSubmit }) => {
   );
 };
 
-export default CustomRobotCard;
+export default CustomCard;

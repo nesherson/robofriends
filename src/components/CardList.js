@@ -4,9 +4,9 @@ import CustomCard from './CustomCard';
 import styles from './cardList.module.css';
 import { ReactComponent as AddIcon } from './icons/add-circle-outline.svg';
 
-function filterRobots(robots, searchField) {
-  return robots.filter((robot) => {
-    return robot.name.toLowerCase().includes(searchField.toLowerCase());
+function filterCharacters(characters, searchField) {
+  return characters.filter((character) => {
+    return character.name.toLowerCase().includes(searchField.toLowerCase());
   });
 }
 
@@ -27,7 +27,7 @@ const returnRandomPicture = () => {
 };
 
 const CardList = ({ searchField }) => {
-  const [robots, setRobots] = useState([]);
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,16 +35,16 @@ const CardList = ({ searchField }) => {
         'https://jsonplaceholder.typicode.com/users'
       );
       const data = await response.json();
-      const tempRobots = data.map((item) => {
+      const tempCharacters = data.map((user) => {
         return {
-          id: item.id,
-          name: item.name,
-          email: item.email,
+          id: user.id,
+          name: user.name,
+          email: user.email,
           pictureType: returnRandomPicture(),
           type: 'default',
         };
       });
-      setRobots(tempRobots);
+      setCharacters(tempCharacters);
     };
     fetchData();
   }, []);
@@ -62,10 +62,10 @@ const CardList = ({ searchField }) => {
       type: 'random',
     };
 
-    setRobots([...robots, newCharacter]);
+    setCharacters([...characters, newCharacter]);
   }
 
-  const filteredRobots = filterRobots(robots, searchField);
+  const filteredCharacters = filterCharacters(characters, searchField);
 
   return (
     <div className={styles.cardListWrapper}>
@@ -73,23 +73,23 @@ const CardList = ({ searchField }) => {
         RANDOM
       </button>
       <div className={styles.cardList}>
-        {filteredRobots.map((robot, i) => {
+        {filteredCharacters.map((character) => {
           return (
             <Card
-              key={robot.id}
-              id={robot.id}
-              name={robot.name}
-              email={robot.email}
-              pictureType={robot.pictureType}
-              type={robot.type}
+              key={character.id}
+              id={character.id}
+              name={character.name}
+              email={character.email}
+              pictureType={character.pictureType}
+              type={character.type}
             />
           );
         })}
         {!(searchField !== '') ? (
           <CustomCard
             onSubmit={(name, email, pictureType) => {
-              setRobots([
-                ...robots,
+              setCharacters([
+                ...characters,
                 {
                   id: Date.now(),
                   name: name,
