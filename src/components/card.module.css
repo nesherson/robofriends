@@ -1,4 +1,4 @@
-.card {
+.characterCard {
   background-color: #80ffbf;
   border-radius: 4px;
   padding: 20px;
@@ -10,6 +10,16 @@
 
 .randomCharacterCard {
   background-color: #ff4d4d;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 7px;
+  box-shadow: 3px 4px 10px -2px rgba(0, 0, 0, 0.61);
+  text-align: center;
+  transition-duration: 0.25s;
+}
+
+.customCharacterCard {
+  background-color: #b3b3b3;
   border-radius: 4px;
   padding: 20px;
   margin: 7px;

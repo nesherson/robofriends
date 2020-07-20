@@ -14,12 +14,19 @@ function getPictureType(pictureType) {
   }
 }
 
-const Card = ({ id, name, email, pictureType, isRandom }) => {
+const Card = ({ id, name, email, pictureType, type }) => {
   const [characterName, setCharacterName] = useState(name);
   const [renderNameForm, setRenderNameForm] = useState(false);
 
+  const cardStyle =
+    type === 'random'
+      ? styles.randomCharacterCard
+      : type === 'custom'
+      ? styles.customCharacterCard
+      : styles.characterCard;
+
   return (
-    <div className={isRandom ? styles.randomCharacterCard : styles.card}>
+    <div className={cardStyle}>
       <img
         src={`https://robohash.org/${id}?set=set${getPictureType(pictureType)}`}
         alt={`${name}`}
