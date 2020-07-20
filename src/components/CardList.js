@@ -53,14 +53,14 @@ const CardList = ({ searchField }) => {
     const data = await response.json();
     const [item] = data.results;
 
-    const newRobot = {
+    const newCharacter = {
       id: item.registered.date,
       name: `${item.name.first} ${item.name.last}`,
       email: item.email,
       pictureType: returnRandomPicture(),
     };
 
-    setRobots([...robots, newRobot]);
+    setRobots([...robots, newCharacter]);
   }
 
   const filteredRobots = filterRobots(robots, searchField);
